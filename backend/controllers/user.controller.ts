@@ -24,7 +24,12 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
       email,
       password: hashedPassword,
       role,
-      location,
+      location: {
+        country: location.country,
+        state: location.state,
+        city: location.city,
+        street: location.street,
+      },
       reviews: [],
       authProvider: 'email',
     });

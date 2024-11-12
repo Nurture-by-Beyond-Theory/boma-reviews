@@ -17,7 +17,12 @@ export interface IUser extends Document {
   suspensionReason?: string | null;
   suspensionExpiry?: Date | null;
   isBanned?: boolean;
-  location: string; // New location field
+  location: {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+  };
 }
 
 // Mongoose schema with the defined interface
@@ -44,7 +49,12 @@ const userSchema: Schema<IUser> = new Schema({
   suspensionReason: { type: String, default: null },
   suspensionExpiry: { type: Date, default: null },
   isBanned: { type: Boolean, default: false },
-  location: { type: String, required: true },
+  location: {
+    country: { type: String, required: true },
+    state: { type: String, required: true },
+    city: { type: String, required: true },
+    street: { type: String, required: true },
+  },
 });
 
 // Exporting the model with the IUser interface applied
