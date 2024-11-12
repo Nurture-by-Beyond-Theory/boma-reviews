@@ -1,13 +1,10 @@
-import { ObjectId } from 'mongoose';
-import mongoose from 'mongoose';
+import { IUser } from './models/user.model';
 
 declare global {
   namespace Express {
     export interface Request {
-      user?: {
-        id: mongoose.Types.ObjectId;
-        role: string;
-      };
+      user?: IUser;  // Ensures that req.user has the IUser properties, including _id
     }
   }
 }
+

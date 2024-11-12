@@ -3,9 +3,11 @@ import mongoose, { Schema, Document } from 'mongoose';
 // TypeScript interface for the User schema
 export interface IUser extends Document {
   _id: mongoose.Types.ObjectId;
-  name: string;
+  username: string;
   email: string;
-  password: string;
+  password?: string;
+  authProvider: 'email' | 'google' | 'facebook';
+  providerId?: string; // Social provider ID
   role: 'tenant' | 'landlord' | 'admin';  // Enumerated role values
   reviews: mongoose.Types.ObjectId[];
   lastLogin?: Date;
@@ -15,13 +17,20 @@ export interface IUser extends Document {
   suspensionReason?: string | null;
   suspensionExpiry?: Date | null;
   isBanned?: boolean;
+  location: string; // New location field
 }
 
 // Mongoose schema with the defined interface
 const userSchema: Schema<IUser> = new Schema({
-  name: { type: String, required: true },
+  username: { type: String, unique: true, required: true },
   email: { type: String, unique: true, required: true },
-  password: { type: String, required: true },
+  password: { type: String }, // Optional to allow social sign-up
+  authProvider: {
+    type: String,
+    enum: ['email', 'google', 'facebook'],
+    required: true,
+  },
+  providerId: { type: String, default: null },
   role: {
     type: String,
     enum: ['tenant', 'landlord', 'admin'],
@@ -35,6 +44,7 @@ const userSchema: Schema<IUser> = new Schema({
   suspensionReason: { type: String, default: null },
   suspensionExpiry: { type: Date, default: null },
   isBanned: { type: Boolean, default: false },
+  location: { type: String, required: true },
 });
 
 // Exporting the model with the IUser interface applied
