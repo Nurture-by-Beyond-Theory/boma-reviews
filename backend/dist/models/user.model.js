@@ -26,9 +26,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 // Mongoose schema with the defined interface
 const userSchema = new mongoose_1.Schema({
-    name: { type: String, required: true },
+    username: { type: String, unique: true, required: true },
     email: { type: String, unique: true, required: true },
-    password: { type: String, required: true },
+    password: { type: String }, // Optional to allow social sign-up
+    authProvider: {
+        type: String,
+        enum: ['email', 'google', 'facebook'],
+        required: true,
+    },
+    providerId: { type: String, default: null },
     role: {
         type: String,
         enum: ['tenant', 'landlord', 'admin'],
@@ -42,6 +48,12 @@ const userSchema = new mongoose_1.Schema({
     suspensionReason: { type: String, default: null },
     suspensionExpiry: { type: Date, default: null },
     isBanned: { type: Boolean, default: false },
+    location: {
+        country: { type: String, required: true },
+        state: { type: String, required: true },
+        city: { type: String, required: true },
+        street: { type: String, required: true },
+    },
 });
 // Exporting the model with the IUser interface applied
 const User = mongoose_1.default.model('User', userSchema);

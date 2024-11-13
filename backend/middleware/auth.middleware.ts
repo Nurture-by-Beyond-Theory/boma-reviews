@@ -48,7 +48,7 @@ export const protect = async (req: Request, res: Response, next: NextFunction): 
 
 // Middleware to restrict routes to admins
 export const admin = (req: Request, res: Response, next: NextFunction): void => {
-  if (req.user && req.user.role === 'admin') {
+  if (req.user && (req.user as IUser).role === 'admin') {
     next();
   } else {
     res.status(403).json({ error: 'Admin privileges required' });

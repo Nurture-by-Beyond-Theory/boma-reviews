@@ -28,7 +28,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 // View all reviews (with an option to filter hidden reviews)
 export const getAllReviews = async (req: Request, res: Response) => {
   try {
-    const reviews = await Review.find().populate('property').populate('user', 'name');
+    const reviews = await Review.find().populate('property').populate('user', 'username');
     res.json(reviews);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -63,7 +63,7 @@ export const toggleReviewVisibility = async (req: Request, res: Response) => {
 // View all flagged reviews
 export const getFlaggedReviews = async (req: Request, res: Response) => {
   try {
-    const flaggedReviews = await Review.find({ flagged: true }).populate('property user', 'name');
+    const flaggedReviews = await Review.find({ flagged: true }).populate('property user', 'username');
     res.json(flaggedReviews);
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -79,7 +79,7 @@ export const warnUser = async (req: Request, res: Response) => {
     user.warningCount = (user.warningCount || 0) + 1;
     await user.save();
 
-    res.json({ message: `User ${user.name} has been warned` });
+    res.json({ message: `User ${user.username} has been warned` });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }

@@ -63,7 +63,7 @@ const flagReview = async (req, res) => {
     const { reviewId } = req.params;
     const { reason } = req.body;
     try {
-        const userId = req.user?.id;
+        const userId = req.user?._id;
         if (!userId) {
             res.status(401).json({ message: 'User not authenticated' });
             return;
@@ -80,8 +80,8 @@ const flagReview = async (req, res) => {
         review.flagged = true;
         if (!review.reports)
             review.reports = [];
-        if (req.user?.id) {
-            review.reports.push({ reason, reportedBy: req.user.id });
+        if (req.user?._id) {
+            review.reports.push({ reason, reportedBy: req.user._id });
             req.user = { id: user._id, role: user.role };
         }
         await review.save();
@@ -89,7 +89,7 @@ const flagReview = async (req, res) => {
         await notification_model_1.default.create({
             type: 'flagged_content',
             message: `Review flagged for: ${reason}`,
-            user: req.user?.id // The user who flagged the content
+            user: req.user?._id // The user who flagged the content
         });
         res.status(200).json({ message: 'Review flagged and notification sent to admin' });
     }
@@ -104,8 +104,8 @@ const getPropertyReviews = async (req, res) => {
     try {
         // Find all reviews for the specified property
         const reviews = await review_model_1.default.find({ property: propertyId })
-            .populate('tenant', 'name') // Populate tenant details
-            .populate('landlord', 'name'); // Populate landlord details
+            .populate('tenant', 'username') // Populate tenant details
+            .populate('landlord', 'username'); // Populate landlord details
         res.status(200).json({ reviews });
     }
     catch (error) {

@@ -24,19 +24,15 @@ export const registerUser = async (req: Request, res: Response): Promise<void> =
       email,
       password: hashedPassword,
       role,
-      location: {
-        country: location.country,
-        state: location.state,
-        city: location.city,
-        street: location.street,
-      },
+      location,
       reviews: [],
       authProvider: 'email',
     });
-
+    console.log("User data to be saved:", user);
     await user.save();
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
+    console.error("Registration error:", error);
     res.status(400).json({ error: 'Error registering user' });
   }
 };

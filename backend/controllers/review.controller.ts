@@ -67,7 +67,7 @@ export const flagReview = async (req: Request, res: Response): Promise<void> => 
   const { reason } = req.body;
 
   try {
-    const userId = req.user?.id;
+    const userId = (req.user as IUser)?._id;
 if (!userId) {
   res.status(401).json({ message: 'User not authenticated' });
   return;
@@ -84,8 +84,8 @@ if (!userId) {
 
     review.flagged = true;
     if (!review.reports) review.reports = []; 
-    if (req.user?.id) {
-      review.reports.push({ reason, reportedBy: req.user.id as unknown as mongoose.Types.ObjectId });
+    if ((req.user as IUser)?._id) {
+      review.reports.push({ reason, reportedBy: (req.user as IUser)._id as unknown as mongoose.Types.ObjectId });
       req.user = { id: user._id as unknown as mongoose.Types.ObjectId, role: user.role };
 
     }
@@ -95,7 +95,7 @@ if (!userId) {
     await Notification.create({
       type: 'flagged_content',
       message: `Review flagged for: ${reason}`,
-      user: req.user?.id // The user who flagged the content
+      user: (req.user as IUser)?._id // The user who flagged the content
     });
 
     res.status(200).json({ message: 'Review flagged and notification sent to admin' });
@@ -111,8 +111,8 @@ export const getPropertyReviews = async (req: Request, res: Response): Promise<v
   try {
     // Find all reviews for the specified property
     const reviews = await Review.find({ property: propertyId })
-      .populate('tenant', 'name') // Populate tenant details
-      .populate('landlord', 'name'); // Populate landlord details
+      .populate('tenant', 'username') // Populate tenant details
+      .populate('landlord', 'username'); // Populate landlord details
 
     res.status(200).json({ reviews });
   } catch (error) {
