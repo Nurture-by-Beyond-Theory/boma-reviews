@@ -1,0 +1,158 @@
+[
+    {
+      "date": "2024-10-31",
+      "review": "The place was fantastic, well-maintained and quiet!",
+      "rating": 4.5,
+      "image": "/images/Review cards 2.png",
+      "location": {
+        "country": "Nigeria",
+        "county": "Gwarimpa",
+        "state": "FCT"
+      },
+      "houseName": "Sunnyvale Apartments",
+      "id": 1
+    },
+    {
+      "date": "2024-09-20",
+      "review": "Great location, but a bit noisy at night.",
+      "rating": 3.5,
+      "image": "/images/Review cards 2.png",
+      "location": {
+        "country": "Nigeria",
+        "county": "Jabi",
+        "state": "FCT"
+      },
+      "houseName": "Maple Residences",
+      "id": 2
+    },
+    {
+        "date": "2024-09-20",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 3
+    },
+    {
+        "date": "2024-09-20",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 4
+    },
+    {
+        "date": "2024-09-20",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 5
+    },
+    {
+        "date": "2024-09-20",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    },
+    {
+        "date": "2024-09-20",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    },
+    {
+        "date": "2024-09-20",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    },
+    {
+        "date": "2024-11-09",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    },
+    {
+        "date": "2024-09-8",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    },
+    {
+        "date": "2024-11-10",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    },
+    {
+        "date": "2024-11-14",
+        "review": "Great location, but a bit noisy at night.",
+        "rating": 3.5,
+        "image": "/images/Review cards 2.png",
+        "location": {
+          "country": "Nigeria",
+          "county": "Jabi",
+          "state": "FCT"
+        },
+        "houseName": "Maple Residences",
+        "id": 6
+    }
+]

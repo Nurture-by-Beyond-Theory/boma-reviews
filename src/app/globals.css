@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+
+    /* Colors */
+    --primary-action: #FA495B;
+    --neutral-white: #fbfbfe;
+    --neutral-black: #0a0a0b;
+    --neutral-gray: #8c8c8c;
+    
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body{
+    margin-top: 120px;
+}
+
+.font-primary{
+    color: var(--primary-action) !important;
+}
+
+.font-neutral-gray{
+    color: var(--neutral-gray)!important;
+}
+
+.primary{
+    background-color: var(--primary-action) !important;
+    color: #FFFFFF;
+}
+
+.tertiary{ 
+    background-color: var(--neutral-white);
+    color: var(--neutral-black);
+}
+
+.secondary{
+    background-color: var(--neutal-black) !important;
+    color: white;
+}
+
+.secondary-gray {
+    background-color: var(--neutal-gray) !important;
+    color: white;
+}
+
+.white-btn {
+    background-color: white !important;
+    color: var(--neutal-black) !important;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;     /* Firefox */
+}
+  
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}

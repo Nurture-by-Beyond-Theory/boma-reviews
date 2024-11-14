@@ -1,0 +1,31 @@
+{
+    "Nigeria": {
+      "States": [
+        {
+          "name": "Lagos",
+          "cities": ["Ikeja", "Epe", "Badagry"]
+        },
+        {
+          "name": "Kano",
+          "cities": ["Kano City", "Wudil", "Gwarzo"]
+        },
+        {
+          "name": "FCT",
+          "cities": ["Jabi","FCT"]
+        }
+      ]
+    },
+    "Kenya": {
+      "States": [
+        {
+          "name": "Nairobi",
+          "cities": ["Westlands", "Kibra", "Lang'ata"]
+        },
+        {
+          "name": "Mombasa",
+          "cities": ["Nyali", "Likoni", "Mvita"]
+        }
+      ]
+    }
+}
+  
