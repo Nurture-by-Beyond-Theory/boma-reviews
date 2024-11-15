@@ -51,8 +51,7 @@ const userSchema = new mongoose_1.Schema({
     location: {
         country: { type: String, required: true },
         state: { type: String, required: true },
-        city: { type: String, required: true },
-        street: { type: String, required: true },
+        address: { type: String, required: true },
     },
 });
 // Exporting the model with the IUser interface applied

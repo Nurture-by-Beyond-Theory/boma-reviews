@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
 // Mongoose schema with the defined interface
 const reviewSchema = new mongoose_1.Schema({
-    tenant: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'User', required: true },
+    tenant: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Tenant', required: true },
     property: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Property', required: true },
     landlord: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Landlord', required: true },
     ratings: {

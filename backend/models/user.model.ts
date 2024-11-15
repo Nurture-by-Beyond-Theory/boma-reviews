@@ -20,9 +20,13 @@ export interface IUser extends Document {
   location: {
     country: string;
     state: string;
-    city: string;
-    street: string;
+    address: string;
   };
+  tenancyDate?: {
+    startDate: Date; // Required
+    endDate?: Date;  // Optional
+  };
+  evidenceOfTenancy?: string; // Optional
 }
 
 // Mongoose schema with the defined interface
@@ -52,8 +56,7 @@ const userSchema: Schema<IUser> = new Schema({
   location: {
     country: { type: String, required: true },
     state: { type: String, required: true },
-    city: { type: String, required: true },
-    street: { type: String, required: true },
+    address: { type: String, required: true },
   },
 });
 

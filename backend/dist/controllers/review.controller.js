@@ -8,53 +8,57 @@ const notification_model_1 = __importDefault(require("../models/notification.mod
 const review_model_1 = __importDefault(require("../models/review.model"));
 const property_model_1 = __importDefault(require("../models/property.model"));
 const landlord_model_1 = __importDefault(require("../models/landlord.model"));
+const mongoose_1 = __importDefault(require("mongoose"));
 const user_model_1 = __importDefault(require("../models/user.model"));
 // Controller function to submit a review
 const submitReview = async (req, res) => {
     try {
-        const { tenantId, propertyId, landlordId, ratings, comment } = req.body;
-        // Checking if the landlord exists or create a new one
+        const { tenantId, landlordId, ratings, comment, propertyDetails } = req.body;
+        // Validate required fields
+        if (!propertyDetails || !propertyDetails.location || !propertyDetails.rent) {
+            res.status(400).json({ error: 'Property details must include location and rent.' });
+            return;
+        }
+        // Validate tenantId format
+        if (!mongoose_1.default.isValidObjectId(tenantId)) {
+            res.status(400).json({ error: 'Invalid tenant ID format.' });
+            return;
+        }
+        // Convert tenantId to ObjectId if needed
+        const tenantObjectId = new mongoose_1.default.Types.ObjectId(tenantId);
+        // Check if landlord exists or create a new one
         let landlord = await landlord_model_1.default.findById(landlordId);
         if (!landlord) {
-            landlord = new landlord_model_1.default({
-                _id: landlordId,
-                name: "Default Landlord Name", // Use the actual name if available
-                contactInfo: "default@example.com" // Required contactInfo field
-            });
+            landlord = new landlord_model_1.default({ _id: landlordId, name: 'Default Name' });
             await landlord.save();
         }
-        // Checking if the property exists or create a new one
-        const propertyDetails = req.body.propertyDetails;
+        // Check if property exists or create a new one
         let property = await property_model_1.default.findOne({ address: propertyDetails.address });
         if (!property) {
             property = new property_model_1.default({
                 address: propertyDetails.address,
-                name: propertyDetails.name,
+                name: propertyDetails.name || 'Unnamed Property',
+                location: propertyDetails.location,
+                rent: propertyDetails.rent,
+                amenities: propertyDetails.amenities || [],
                 landlord: landlord._id,
-                // Add other property fields as necessary
             });
             await property.save();
         }
-        // Create a new review
+        // Create and save the review
         const review = new review_model_1.default({
-            tenant: tenantId,
-            property: propertyId,
+            tenant: tenantObjectId,
+            property: property._id,
             landlord: landlord._id,
-            ratings: {
-                utilities: ratings.utilities,
-                landlord: ratings.landlord,
-                neighborhood: ratings.neighborhood,
-                // Add other rating fields as needed
-            },
-            comment: comment,
+            ratings,
+            comment,
         });
-        // Save the review to the database
         await review.save();
         res.status(201).json({ message: 'Review submitted successfully', review });
     }
     catch (error) {
-        console.error('Error submitting review:', error);
-        res.status(500).json({ error: 'Server error' });
+        console.error('Error submitting review:', error); // Detailed logging
+        res.status(500).json({ error: 'An error occurred while submitting the review.' });
     }
 };
 exports.submitReview = submitReview;

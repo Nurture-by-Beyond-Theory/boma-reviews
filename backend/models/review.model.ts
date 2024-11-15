@@ -22,7 +22,7 @@ export interface IReview extends Document {
 // Mongoose schema with the defined interface
 const reviewSchema: Schema<IReview> = new Schema(
   {
-    tenant: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    tenant: { type: mongoose.Schema.Types.ObjectId, ref: 'Tenant', required: true },
     property: { type: mongoose.Schema.Types.ObjectId, ref: 'Property', required: true },
     landlord: { type: mongoose.Schema.Types.ObjectId, ref: 'Landlord', required: true },
     ratings: {
