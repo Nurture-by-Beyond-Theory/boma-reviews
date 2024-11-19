@@ -25,10 +25,10 @@ const HomePage = () => {
   
 
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex flex-col container overflow-hidden">
       
 
-      <div className="flex  flex-col md:flex-row justify-center lg:px-32 md:px-16 items-center text-center min-h-[80vh] p-8">
+      <div className="flex  flex-col md:flex-row justify-center lg:px-16  items-center text-center min-h-[80vh]">
         <div className="flex flex-col w-full md:basis-6/12 py-16 text-center md:text-left">
 
           <h1 className="text-3xl md:text-6xl font-bold">Know Your Landlord.</h1>
@@ -77,7 +77,7 @@ const HomePage = () => {
       
 
       {/* Trusted Source Section */}
-      <div className='flex flex-col font-medium w-full md:p-16 p-8 justify-center items-center gap-20 tertiary'>
+      <div className='flex flex-col font-medium w-full justify-center items-center gap-20 tertiary'>
 
         <h1 className='max-w-xl font-bold text-xl md:text-5xl text-center'>Your <span className='font-primary'>Trusted</span> source for Safer, Smarter Rentals</h1>
 
@@ -152,9 +152,9 @@ const HomePage = () => {
 
 
       {/* Reviews Section */}
-      <div className='flex flex-col justify-center items-center w-10/12  mx-auto mt-20'>
+      <div className='flex flex-col justify-center items-center w-full mx-auto mt-20'>
         <h1 className='font-bold text-xl'>Recent Activities  Tenants </h1>
-        <div className="m:p-4 p-8 flex flex-row flex-wrap items-center">
+        <div className="m:p-4 flex flex-row flex-wrap items-center">
           {reviewsData.map((review) => (                
                 
            
