@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import MainLayout from "@/components/MainLayout";"../components/MainLayout"
-
-
+import MainLayout from "@/components/MainLayout";
+import ClientSideWrapper from "@/components/ClientSideWrapper"; // Client logic here
 
 export const metadata: Metadata = {
   title: "Next Js Tailwind Sandbox",
@@ -17,9 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MainLayout>
-          {children}
-        </MainLayout>
+        <ClientSideWrapper>{children}</ClientSideWrapper>
       </body>
     </html>
   );

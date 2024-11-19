@@ -25,8 +25,8 @@ const Navbar = () => {
     }
   return (
     
-    <div style={{backgroundColor: "#fff"}} className="w-full z-50 fixed top-0 items-center md:px-16 px-8 pt-10">
-        <nav className="flex w-full md:justify-center justify-between items-center md:space-x-2 mb-6  px-8 md:px-8">
+    <div style={{backgroundColor: "#fff"}} className="w-full mx-auto z-50 sticky top-0 items-center md:px-16 px-8 pt-10">
+        <nav className="flex w-full md:justify-center justify-between items-center md:space-x-2 mb-6  px-8">
             
             {/* Logo */}
             <div className="justify-start text-md md:basis-1/12 lg:basis-1/6 relative min-h-10 min-w-36">
@@ -117,6 +117,8 @@ const Navbar = () => {
         </nav>
         <hr className="border-red-200 w-full hidden md:block"/>
     </div>
+
+    
   )
 }
 
