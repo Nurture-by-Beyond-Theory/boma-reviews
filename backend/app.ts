@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from './config/db';
 import reviewRoutes from './routes/review.routes'; 
 import { protect, admin } from './middleware/auth.middleware';
@@ -11,6 +12,14 @@ dotenv.config();
 
 const app = express();
 connectDB();
+
+app.use(
+   cors({
+     origin: '*', // Allow all origins. Replace '*' with your frontend's URL in production, e.g., 'http://localhost:3000'
+     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+     allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+   })
+ );
 
 app.use(express.json());
 
