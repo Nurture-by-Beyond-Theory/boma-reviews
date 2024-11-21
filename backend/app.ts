@@ -16,8 +16,9 @@ connectDB();
 app.use(
    cors({
      origin: '*', // Allow all origins. Replace '*' with your frontend's URL in production, e.g., 'http://localhost:3000'
-     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
      allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+     credentials: true,
    })
  );
 

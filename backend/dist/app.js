@@ -17,8 +17,9 @@ const app = (0, express_1.default)();
 (0, db_1.default)();
 app.use((0, cors_1.default)({
     origin: '*', // Allow all origins. Replace '*' with your frontend's URL in production, e.g., 'http://localhost:3000'
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
+    credentials: true,
 }));
 app.use(express_1.default.json());
 // Protected /api/reviews routes
